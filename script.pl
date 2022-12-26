@@ -7,9 +7,9 @@ open(WF, $path) or die;
 
 `g++ softmax_naive.cpp -o softmax_naive -fopenmp -O2`;
 `g++ softmax_omp.cpp -o softmax_omp -fopenmp -O2`;
-`g++ softmax_omp_div.cpp -o softmax_omp_div -fopenmp -O2`;
+# `g++ softmax_omp_div.cpp -o softmax_omp_div -fopenmp -O2`;
 `g++ softmax_mkl.cpp -o softmax_mkl -L/opt/intel/oneapi/mkl/latest/lib/intel64 -Wl,--no-as-needed -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -DMKL_ILP64 -m64 -I/opt/intel/oneapi/mkl/latest/include -fopenmp -O2 -march=native`;
-`g++ softmax_mkl_avx.cpp -o softmax_mkl_avx -L/opt/intel/oneapi/mkl/latest/lib/intel64 -Wl,--no-as-needed -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -DMKL_ILP64 -m64 -I/opt/intel/oneapi/mkl/latest/include -fopenmp -O2 -g -march=native`;
+`g++ softmax_mkl_avx.cpp -o softmax_mkl_avx -L/opt/intel/oneapi/mkl/latest/lib/intel64 -Wl,--no-as-needed -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl -DMKL_ILP64 -m64 -I/opt/intel/oneapi/mkl/latest/include -fopenmp -O2 -g -march=native -mavx512vl`;
 
 
 $time = 0.;
